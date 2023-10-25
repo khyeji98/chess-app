@@ -5,13 +5,34 @@
 //  Created by 김혜지 on 10/15/23.
 //
 
-enum File: String, CaseIterable {
-    case a = "A"
-    case b = "B"
-    case c = "C"
-    case d = "D"
-    case e = "E"
-    case f = "F"
-    case g = "G"
-    case h = "H"
+enum File: Int, CaseIterable, CustomStringConvertible {
+    case a
+    case b
+    case c
+    case d
+    case e
+    case f
+    case g
+    case h
+    
+    var description: String {
+        switch self {
+        case .a:
+            return "A"
+        case .b:
+            return "B"
+        case .c:
+            return "C"
+        case .d:
+            return "D"
+        case .e:
+            return "E"
+        case .f:
+            return "F"
+        case .g:
+            return "G"
+        case .h:
+            return "H"
+        }
+    }
 }
