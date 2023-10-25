@@ -8,6 +8,8 @@
 protocol Rook: Piece {}
 
 extension Rook {
+    var score: Int { 5 }
+    
     func _movableCoordinates(from coordinate: Board.Coordinate) -> [Board.Coordinate] {
         var coordinates: [Board.Coordinate] = []
         

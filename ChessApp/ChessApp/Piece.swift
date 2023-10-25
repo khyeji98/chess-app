@@ -8,6 +8,7 @@
 protocol Piece {
     var color: PieceColor { get }
     var symbol: String { get }
+    var score: Int { get }
     
     func _movableCoordinates(from coordinate: Board.Coordinate) -> [Board.Coordinate]
 }

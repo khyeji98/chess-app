@@ -8,6 +8,8 @@
 protocol Bishop: Piece {}
 
 extension Bishop {
+    var score: Int { 3 }
+    
     func _movableCoordinates(from coordinate: Board.Coordinate) -> [Board.Coordinate] {
         var coordinates: [Board.Coordinate] = []
         

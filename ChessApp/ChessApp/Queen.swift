@@ -8,6 +8,8 @@
 protocol Queen: Piece {}
 
 extension Queen {
+    var score: Int { 9 }
+    
     func _movableCoordinates(from coordinate: Board.Coordinate) -> [Board.Coordinate] {
         var coordinates: [Board.Coordinate] = []
         
