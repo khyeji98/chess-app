@@ -7,7 +7,7 @@
 
 struct Board {
     typealias Coordinate = (file: File, rank: Rank)
-    typealias Squares = [Rank: [File: Piece?]]
+    typealias Squares = [[Piece?]]
     
     private(set) var currentTurnColor: PieceColor
     private(set) var squares: Squares
@@ -26,23 +26,23 @@ struct Board {
     }
     
     func searchMovableCoordinates(at coordinate: Coordinate) -> [Coordinate] {
-        guard let piece = self.squares[coordinate.rank]?[coordinate.file] as? Piece else { return [] }
+        guard let piece = self.squares[coordinate.rank.rawValue][coordinate.file.rawValue] else { return [] }
         guard piece.color == self.currentTurnColor else { return [] }
         return piece.movableCoordinates(at: coordinate)
     }
     
     mutating func move(from currentCoordinate: Coordinate, to targetCoordinate: Coordinate) -> Bool {
-        guard let currentPiece = self.squares[currentCoordinate.rank]?[currentCoordinate.file] as? Piece else { return false }
-        guard let targetPiece = self.squares[targetCoordinate.rank]?[targetCoordinate.file] as? Piece else {
-            self.squares[targetCoordinate.rank]?[targetCoordinate.file] = currentPiece
-            self.squares[currentCoordinate.rank]?[currentCoordinate.file] = nil
+        guard let currentPiece = self.squares[currentCoordinate.rank.rawValue][currentCoordinate.file.rawValue] else { return false }
+        guard let targetPiece = self.squares[targetCoordinate.rank.rawValue][targetCoordinate.file.rawValue] else {
+            self.squares[targetCoordinate.rank.rawValue][targetCoordinate.file.rawValue] = currentPiece
+            self.squares[currentCoordinate.rank.rawValue][currentCoordinate.file.rawValue] = nil
             self.switchTurn()
             return true
         }
         
         guard targetPiece.color != currentPiece.color else { return false }
-        self.squares[targetCoordinate.rank]?[targetCoordinate.file] = currentPiece
-        self.squares[currentCoordinate.rank]?[currentCoordinate.file] = nil
+        self.squares[targetCoordinate.rank.rawValue][targetCoordinate.file.rawValue] = currentPiece
+        self.squares[currentCoordinate.rank.rawValue][currentCoordinate.file.rawValue] = nil
         self.switchTurn()
         return true
     }
@@ -57,6 +57,6 @@ struct Board {
     }
     
     func display() -> String {
-        self.squares.map({ $0.value.map({ $0.value?.symbol ?? "." }).joined()}).joined(separator: "\n")
+        self.squares.map({ $0.map({ $0?.symbol ?? "." }).joined()}).joined(separator: "\n")
     }
 }
