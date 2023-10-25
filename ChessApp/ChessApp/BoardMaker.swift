@@ -13,7 +13,7 @@ struct BoardMaker {
             var squaresPerRank: [File: Piece?] = [:]
             
             for file in File.allCases {
-                let piece = _piece(for: rank)
+                let piece = _piece(at: (file, rank))
                 squaresPerRank.updateValue(piece, forKey: file)
             }
             
@@ -23,15 +23,40 @@ struct BoardMaker {
         return squares
     }
     
-    private static func _piece(for rank: Rank) -> Piece? {
-        if rank == .two {
-            return Pawn(color: .black)
+    private static func _piece(at coordinate: Board.Coordinate) -> Piece? {
+        switch coordinate.rank {
+        case .one:
+            switch coordinate.file {
+            case .a, .h:
+                return BlackRook()
+            case .b, .g:
+                return BlackKnight()
+            case .c, .f:
+                return BlackBishop()
+            case .e:
+                return BlackQueen()
+            default:
+                return nil
+            }
+        case .two:
+            return BlackPawn()
+        case .seven:
+            return WhitePawn()
+        case .eight:
+            switch coordinate.file {
+            case .a, .h:
+                return WhiteRook()
+            case .b, .g:
+                return WhiteKnight()
+            case .c, .f:
+                return WhiteBishop()
+            case .e:
+                return WhiteQueen()
+            default:
+                return nil
+            }
+        default:
+            return nil
         }
-        
-        if rank == .seven {
-            return Pawn(color: .white)
-        }
-        
-        return nil
     }
 }
