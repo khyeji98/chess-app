@@ -55,4 +55,8 @@ struct Board {
             self.currentTurnColor = .black
         }
     }
+    
+    func display() -> String {
+        self.squares.map({ $0.value.map({ $0.value?.symbol ?? "." }).joined()}).joined(separator: "\n")
+    }
 }
