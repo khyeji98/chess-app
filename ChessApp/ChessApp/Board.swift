@@ -36,12 +36,23 @@ struct Board {
         guard let targetPiece = self.squares[targetCoordinate.rank]?[targetCoordinate.file] as? Piece else {
             self.squares[targetCoordinate.rank]?[targetCoordinate.file] = currentPiece
             self.squares[currentCoordinate.rank]?[currentCoordinate.file] = nil
+            self.switchTurn()
             return true
         }
         
         guard targetPiece.color != currentPiece.color else { return false }
         self.squares[targetCoordinate.rank]?[targetCoordinate.file] = currentPiece
         self.squares[currentCoordinate.rank]?[currentCoordinate.file] = nil
+        self.switchTurn()
         return true
+    }
+    
+    mutating func switchTurn() {
+        switch self.currentTurnColor {
+        case .black:
+            self.currentTurnColor = .white
+        case .white:
+            self.currentTurnColor = .black
+        }
     }
 }
