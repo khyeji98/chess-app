@@ -35,4 +35,9 @@ enum Rank: Int, CaseIterable, CustomStringConvertible {
             return "8"
         }
     }
+    
+    init?(withDescription description: String) {
+        guard let rank = Self.allCases.first(where: { $0.description == description }) else { return nil }
+        self = rank
+    }
 }

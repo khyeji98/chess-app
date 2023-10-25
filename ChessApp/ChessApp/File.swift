@@ -35,4 +35,9 @@ enum File: Int, CaseIterable, CustomStringConvertible {
             return "H"
         }
     }
+    
+    init?(withDescription description: String) {
+        guard let file = Self.allCases.first(where: { $0.description == description }) else { return nil }
+        self = file
+    }
 }

@@ -15,6 +15,14 @@ struct Board {
         self.squares = squares
     }
     
+    func verifyCoordinate(input: String) -> Coordinate? {
+        let separatedInput = input.components(separatedBy: "")
+        guard separatedInput.count == 2 else { return nil }
+        guard let file = File(withDescription: separatedInput[0]) else { return nil }
+        guard let rank = Rank(withDescription: separatedInput[1]) else { return nil }
+        return (file, rank)
+    }
+    
     func _movableCoordinates(from coordinate: Coordinate) -> [Coordinate] {
         guard let piece = self.squares[coordinate.rank]?[coordinate.file] as? Piece else { return [] }
         return piece._movableCoordinates(from: coordinate)
