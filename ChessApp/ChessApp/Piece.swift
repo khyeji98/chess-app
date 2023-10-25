@@ -10,5 +10,5 @@ protocol Piece {
     var symbol: String { get }
     var score: Int { get }
     
-    func _movableCoordinates(from coordinate: Board.Coordinate) -> [Board.Coordinate]
+    func movableCoordinates(at coordinate: Board.Coordinate) -> [Board.Coordinate]
 }

@@ -10,7 +10,7 @@ struct BlackPawn: Piece {
     var symbol: String { "♟" }
     var score: Int { 1 }
     
-    func _movableCoordinates(from coordinate: Board.Coordinate) -> [Board.Coordinate] {
+    func movableCoordinates(at coordinate: Board.Coordinate) -> [Board.Coordinate] {
         guard let nextRank = Rank(rawValue: coordinate.rank.rawValue + 1) else { return [] }
         return [(coordinate.file, nextRank)]
     }
@@ -21,7 +21,7 @@ struct WhitePawn: Piece {
     var symbol: String { "♙" }
     var score: Int { 1 }
     
-    func _movableCoordinates(from coordinate: Board.Coordinate) -> [Board.Coordinate] {
+    func movableCoordinates(at coordinate: Board.Coordinate) -> [Board.Coordinate] {
         guard let nextRank = Rank(rawValue: coordinate.rank.rawValue - 1) else { return [] }
         return [(coordinate.file, nextRank)]
     }

@@ -10,33 +10,33 @@ protocol Knight: Piece {}
 extension Knight {
     var score: Int { 3 }
     
-    func _movableCoordinates(from coordinate: Board.Coordinate) -> [Board.Coordinate] {
+    func movableCoordinates(at coordinate: Board.Coordinate) -> [Board.Coordinate] {
         var coordinates: [Board.Coordinate] = []
         
         if let twoUpRank = Rank(rawValue: coordinate.rank.rawValue + 2 ) {
-            let result = searchMovableCoordinates(atRank: twoUpRank, bothSidesOfFile: coordinate.file)
+            let result = movableCoordinates(atRank: twoUpRank, bothSidesOfFile: coordinate.file)
             coordinates.append(contentsOf: result)
         }
         
         if let twoDownRank = Rank(rawValue: coordinate.rank.rawValue - 2) {
-            let result = searchMovableCoordinates(atRank: twoDownRank, bothSidesOfFile: coordinate.file)
+            let result = movableCoordinates(atRank: twoDownRank, bothSidesOfFile: coordinate.file)
             coordinates.append(contentsOf: result)
         }
         
         if let twoLeftFile = File(rawValue: coordinate.file.rawValue - 2) {
-            let result = searchMovableCoordinates(atFile: twoLeftFile, bothSidesOfRank: coordinate.rank)
+            let result = movableCoordinates(atFile: twoLeftFile, bothSidesOfRank: coordinate.rank)
             coordinates.append(contentsOf: result)
         }
         
         if let twoRightFile = File(rawValue: coordinate.file.rawValue + 2) {
-            let result = searchMovableCoordinates(atFile: twoRightFile, bothSidesOfRank: coordinate.rank)
+            let result = movableCoordinates(atFile: twoRightFile, bothSidesOfRank: coordinate.rank)
             coordinates.append(contentsOf: result)
         }
         
         return coordinates
     }
     
-    private func searchMovableCoordinates(atRank rank: Rank, bothSidesOfFile file: File) -> [Board.Coordinate] {
+    private func movableCoordinates(atRank rank: Rank, bothSidesOfFile file: File) -> [Board.Coordinate] {
         var coordinates: [Board.Coordinate] = []
         
         if let leftFile = File(rawValue: file.rawValue - 1) {
@@ -50,7 +50,7 @@ extension Knight {
         return coordinates
     }
     
-    private func searchMovableCoordinates(atFile file: File, bothSidesOfRank rank: Rank) -> [Board.Coordinate] {
+    private func movableCoordinates(atFile file: File, bothSidesOfRank rank: Rank) -> [Board.Coordinate] {
         var coordinates: [Board.Coordinate] = []
         
         if let upRank = Rank(rawValue: rank.rawValue + 1) {

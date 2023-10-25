@@ -10,7 +10,7 @@ protocol Rook: Piece {}
 extension Rook {
     var score: Int { 5 }
     
-    func _movableCoordinates(from coordinate: Board.Coordinate) -> [Board.Coordinate] {
+    func movableCoordinates(at coordinate: Board.Coordinate) -> [Board.Coordinate] {
         var coordinates: [Board.Coordinate] = []
         
         for rank in Rank.allCases where rank != coordinate.rank {

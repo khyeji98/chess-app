@@ -10,25 +10,25 @@ protocol Queen: Piece {}
 extension Queen {
     var score: Int { 9 }
     
-    func _movableCoordinates(from coordinate: Board.Coordinate) -> [Board.Coordinate] {
+    func movableCoordinates(at coordinate: Board.Coordinate) -> [Board.Coordinate] {
         var coordinates: [Board.Coordinate] = []
         
-        let sideCoordinates = _movableSideCoordinates(from: coordinate)
-        let upDownCoordinates = _movableUpDownCoordinates(from: coordinate)
-        let diagonalCoordinates = _movableDiagonalCoordinates(from: coordinate)
+        let sideCoordinates = movableSideCoordinates(at: coordinate)
+        let upDownCoordinates = movableUpDownCoordinates(at: coordinate)
+        let diagonalCoordinates = movableDiagonalCoordinates(at: coordinate)
         
         return coordinates
     }
     
-    private func _movableSideCoordinates(from coordinate: Board.Coordinate) -> [Board.Coordinate] {
+    private func movableSideCoordinates(at coordinate: Board.Coordinate) -> [Board.Coordinate] {
         File.allCases.filter({ $0 != coordinate.file }).map({ ($0, coordinate.rank) })
     }
     
-    private func _movableUpDownCoordinates(from coordinate: Board.Coordinate) -> [Board.Coordinate] {
+    private func movableUpDownCoordinates(at coordinate: Board.Coordinate) -> [Board.Coordinate] {
         Rank.allCases.filter({ $0 != coordinate.rank }).map({ (coordinate.file, $0) })
     }
     
-    private func _movableDiagonalCoordinates(from coordinate: Board.Coordinate) -> [Board.Coordinate] {
+    private func movableDiagonalCoordinates(at coordinate: Board.Coordinate) -> [Board.Coordinate] {
         var coordinates: [Board.Coordinate] = []
         
         var rankIncreaseAndDecreaseValue: Int = 0

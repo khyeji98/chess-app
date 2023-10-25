@@ -9,9 +9,11 @@ struct Board {
     typealias Coordinate = (file: File, rank: Rank)
     typealias Squares = [Rank: [File: Piece?]]
     
+    private(set) var currentTurnColor: PieceColor
     private(set) var squares: Squares
     
-    init(squares: Squares = BoardMaker.make()) {
+    init(currentTurnColor: PieceColor = .white, squares: Squares = BoardMaker.make()) {
+        self.currentTurnColor = currentTurnColor
         self.squares = squares
     }
     
@@ -23,9 +25,10 @@ struct Board {
         return (file, rank)
     }
     
-    func _movableCoordinates(from coordinate: Coordinate) -> [Coordinate] {
+    func searchMovableCoordinates(at coordinate: Coordinate) -> [Coordinate] {
         guard let piece = self.squares[coordinate.rank]?[coordinate.file] as? Piece else { return [] }
-        return piece._movableCoordinates(from: coordinate)
+        guard piece.color == self.currentTurnColor else { return [] }
+        return piece.movableCoordinates(at: coordinate)
     }
     
     mutating func move(from currentCoordinate: Coordinate, to targetCoordinate: Coordinate) -> Bool {
