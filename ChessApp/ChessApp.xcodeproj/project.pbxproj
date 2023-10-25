@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		331568C12AE6625B00AEA846 /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331568C02AE6625B00AEA846 /* Queen.swift */; };
+		331568C32AE7B06800AEA846 /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331568C22AE7B06800AEA846 /* Bishop.swift */; };
+		331568C52AE8EE7300AEA846 /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331568C42AE8EE7300AEA846 /* Rook.swift */; };
+		331568C72AE8F21A00AEA846 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331568C62AE8F21A00AEA846 /* Knight.swift */; };
 		333031022ADB1611004A0976 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333031012ADB1611004A0976 /* Board.swift */; };
 		333031042ADB1904004A0976 /* PieceColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333031032ADB1904004A0976 /* PieceColor.swift */; };
 		333031062ADB197D004A0976 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333031052ADB197D004A0976 /* Rank.swift */; };
@@ -41,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		331568C02AE6625B00AEA846 /* Queen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
+		331568C22AE7B06800AEA846 /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
+		331568C42AE8EE7300AEA846 /* Rook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
+		331568C62AE8F21A00AEA846 /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
 		333031012ADB1611004A0976 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		333031032ADB1904004A0976 /* PieceColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceColor.swift; sourceTree = "<group>"; };
 		333031052ADB197D004A0976 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
@@ -117,6 +125,10 @@
 				333031112ADB314A004A0976 /* BoardMaker.swift */,
 				3330310F2ADB2EBE004A0976 /* Piece.swift */,
 				333031132ADD21EE004A0976 /* Pawn.swift */,
+				331568C02AE6625B00AEA846 /* Queen.swift */,
+				331568C62AE8F21A00AEA846 /* Knight.swift */,
+				331568C42AE8EE7300AEA846 /* Rook.swift */,
+				331568C22AE7B06800AEA846 /* Bishop.swift */,
 				333DAEF92AD9820200F821EC /* Assets.xcassets */,
 				333DAEFB2AD9820200F821EC /* Preview Content */,
 			);
@@ -281,9 +293,13 @@
 				333031122ADB314A004A0976 /* BoardMaker.swift in Sources */,
 				333031062ADB197D004A0976 /* Rank.swift in Sources */,
 				333031042ADB1904004A0976 /* PieceColor.swift in Sources */,
+				331568C32AE7B06800AEA846 /* Bishop.swift in Sources */,
 				333031142ADD21EE004A0976 /* Pawn.swift in Sources */,
+				331568C12AE6625B00AEA846 /* Queen.swift in Sources */,
 				333DAEF82AD9820000F821EC /* ContentView.swift in Sources */,
 				333031102ADB2EBE004A0976 /* Piece.swift in Sources */,
+				331568C72AE8F21A00AEA846 /* Knight.swift in Sources */,
+				331568C52AE8EE7300AEA846 /* Rook.swift in Sources */,
 				333DAEF62AD9820000F821EC /* ChessAppApp.swift in Sources */,
 				333031082ADB1A29004A0976 /* File.swift in Sources */,
 				333031022ADB1611004A0976 /* Board.swift in Sources */,
