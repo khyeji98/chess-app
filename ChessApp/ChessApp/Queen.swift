@@ -11,13 +11,11 @@ extension Queen {
     var score: Int { 9 }
     
     func movableCoordinates(at coordinate: Board.Coordinate) -> [Board.Coordinate] {
-        var coordinates: [Board.Coordinate] = []
-        
         let sideCoordinates = movableSideCoordinates(at: coordinate)
         let upDownCoordinates = movableUpDownCoordinates(at: coordinate)
         let diagonalCoordinates = movableDiagonalCoordinates(at: coordinate)
         
-        return coordinates
+        return sideCoordinates + upDownCoordinates + diagonalCoordinates
     }
     
     private func movableSideCoordinates(at coordinate: Board.Coordinate) -> [Board.Coordinate] {
