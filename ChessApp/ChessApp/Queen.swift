@@ -8,7 +8,7 @@
 protocol Queen: Piece {}
 
 extension Queen {
-    var score: Int { 9 }
+    var points: Int { 9 }
     
     func movableCoordinates(at coordinate: Board.Coordinate) -> [Board.Coordinate] {
         let sideCoordinates = movableSideCoordinates(at: coordinate)

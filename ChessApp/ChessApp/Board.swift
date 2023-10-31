@@ -9,11 +9,13 @@ struct Board {
     typealias Coordinate = (file: File, rank: Rank)
     typealias Squares = [[Piece?]]
     
-    private(set) var currentTurnColor: PieceColor
-    private(set) var squares: Squares
+    private var currentTurnColor: PieceColor
+    private var scores: [PieceColor: Int]
+    private var squares: Squares
     
-    init(currentTurnColor: PieceColor = .white, squares: Squares = BoardMaker.make()) {
+    init(currentTurnColor: PieceColor = .white, scores: [PieceColor : Int] = [:], squares: Squares = BoardMaker.make()) {
         self.currentTurnColor = currentTurnColor
+        self.scores = scores
         self.squares = squares
     }
     
@@ -47,6 +49,7 @@ struct Board {
         guard targetPiece.color != currentPiece.color else { return false }
         self.squares[targetCoordinate.rank.rawValue][targetCoordinate.file.rawValue] = currentPiece
         self.squares[currentCoordinate.rank.rawValue][currentCoordinate.file.rawValue] = nil
+        self.score(points: targetPiece.points)
         self.switchTurn()
         return true
     }
@@ -58,6 +61,11 @@ struct Board {
         case .white:
             self.currentTurnColor = .black
         }
+    }
+    
+    mutating func score(points: Int) {
+        let score = self.scores[self.currentTurnColor] ?? 0
+        self.scores.updateValue(score + points, forKey: self.currentTurnColor)
     }
     
     func display() -> String {
