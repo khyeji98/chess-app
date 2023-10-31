@@ -28,7 +28,11 @@ struct Board {
     func searchMovableCoordinates(at coordinate: Coordinate) -> [Coordinate] {
         guard let piece = self.squares[coordinate.rank.rawValue][coordinate.file.rawValue] else { return [] }
         guard piece.color == self.currentTurnColor else { return [] }
-        return piece.movableCoordinates(at: coordinate)
+        let movableCoordinates = piece.movableCoordinates(at: coordinate).filter { file, rank in
+            let piece = self.squares[rank.rawValue][file.rawValue]
+            return piece?.color != self.currentTurnColor
+        }
+        return movableCoordinates
     }
     
     mutating func move(from currentCoordinate: Coordinate, to targetCoordinate: Coordinate) -> Bool {
